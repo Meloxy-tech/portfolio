@@ -11,15 +11,32 @@
     <meta property="og:url" content="https://vishaldhankhar.dev">
     <meta name="twitter:card" content="summary">
     <meta name="theme-color" content="#0e0e0e">
-    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%230e0e0e'/%3E%3Ctext x='32' y='42' font-family='Arial,sans-serif' font-size='28' font-weight='900' fill='%23818cf8' text-anchor='middle'%3EV%3C/text%3E%3C/svg%3E">
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%230e0e0e'/%3E%3Ctext x='32' y='42' font-family='Arial,sans-serif' font-size='28' font-weight='900' fill='%23c7b88a' text-anchor='middle'%3EV%3C/text%3E%3C/svg%3E">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <a class="skip-link" href="#main-content">Skip to content</a>
+
+    <!-- Film grain -->
+    <div class="grain" aria-hidden="true"></div>
+
+    <!-- Ambient cursor glow -->
+    <div class="cursor-glow" id="cursorGlow" aria-hidden="true"></div>
+
+    <!-- Scroll progress -->
     <div class="scroll-progress" id="scrollProgress"></div>
 
+    <!-- Side section indicator -->
+    <nav class="section-indicator" id="sectionIndicator" aria-label="Section navigation">
+        <a href="#home"     class="is-active" data-section="home"     aria-label="Home"></a>
+        <a href="#about"                       data-section="about"    aria-label="About"></a>
+        <a href="#skills"                      data-section="skills"   aria-label="Skills"></a>
+        <a href="#projects"                    data-section="projects" aria-label="Projects"></a>
+        <a href="#contact"                     data-section="contact"  aria-label="Contact"></a>
+    </nav>
+
     <header class="site-header" id="siteHeader">
-        <a class="brand" href="#home" aria-label="Vishal home">Vishal</a>
+        <a class="brand" href="#home" aria-label="Vishal home">Vishal.</a>
         <button class="menu-button" id="menuButton" type="button" aria-expanded="false" aria-controls="siteNav">
             <span></span>
             <span></span>
@@ -30,31 +47,47 @@
             <a href="#skills">Skills</a>
             <a href="#projects">Projects</a>
             <a href="#contact">Contact</a>
-            <a class="nav-resume" href="./resume.pdf" target="_blank" rel="noopener noreferrer" download="Vishal_Dhankhar_Resume.pdf">Resume</a>
+            <a class="nav-resume" href="./resume.pdf" target="_blank" rel="noopener noreferrer" download="Vishal_Dhankhar_Resume.pdf">Résumé ↓</a>
         </nav>
     </header>
 
     <main id="main-content">
+
+        <!-- ══ HERO ══════════════════════════════════════════════════ -->
         <section class="hero section" id="home">
-            <div class="hero-copy reveal">
-                <p class="eyebrow">Open to internships and full-stack work</p>
-                <h1>Vishal</h1>
-                <p class="hero-lede">
+            <div class="hero-copy">
+                <!-- Available pill -->
+                <div class="avail-pill reveal">
+                    <span class="avail-dot" aria-hidden="true">
+                        <span></span>
+                    </span>
+                    Available for internships &amp; full-stack work
+                </div>
+
+                <h1 class="hero-h1">Vishal.</h1>
+
+                <p class="hero-lede reveal" style="--delay:0.2s">
                     Full-stack developer with systems curiosity and growing ML/CV depth. I build products that are usable on the surface and explainable underneath.
                 </p>
-                <div class="hero-actions">
+
+                <div class="hero-actions reveal" style="--delay:0.35s">
                     <a class="button primary" href="#projects">View Work</a>
-                    <a class="button secondary" href="./resume.pdf" target="_blank" rel="noopener noreferrer" download="Vishal_Dhankhar_Resume.pdf">Download Resume</a>
+                    <a class="button secondary" href="./resume.pdf" target="_blank" rel="noopener noreferrer" download="Vishal_Dhankhar_Resume.pdf">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+                        Download Resume
+                    </a>
                 </div>
             </div>
 
+            <!-- Stat cards -->
             <dl class="stats reveal" aria-label="Project highlights">
                 <div>
                     <dt>Shipped</dt>
-                    <dd>3 live apps</dd>
+                    <dd class="count" data-target="3">0</dd>
+                    <dd class="count-label">live apps</dd>
                 </div>
                 <div>
-                    <dt>Real-time</dt>
+                    <dt>Architecture</dt>
                     <dd>CRDT · WebSockets</dd>
                 </div>
                 <div>
@@ -62,20 +95,62 @@
                     <dd>Postgres · Supabase</dd>
                 </div>
                 <div>
-                    <dt>Status</dt>
-                    <dd>Open to work</dd>
+                    <dt>CGPA</dt>
+                    <dd class="count" data-target="8.4" data-decimals="1">0</dd>
                 </div>
             </dl>
+
+            <!-- Scroll down nudge -->
+            <a class="scroll-indicator" href="#about" aria-label="Scroll to about">
+                <span>Scroll</span>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M19 14l-7 7m0 0l-7-7m7 7V3"/></svg>
+            </a>
         </section>
 
+        <!-- Tech marquee -->
+        <div class="marquee-track" aria-hidden="true">
+            <div class="marquee-inner">
+                <div class="marquee-content">
+                    <span>React</span><span class="dot">·</span>
+                    <span>Next.js</span><span class="dot">·</span>
+                    <span>TypeScript</span><span class="dot">·</span>
+                    <span>Node.js</span><span class="dot">·</span>
+                    <span>PostgreSQL</span><span class="dot">·</span>
+                    <span>Supabase</span><span class="dot">·</span>
+                    <span>Prisma</span><span class="dot">·</span>
+                    <span>WebSockets</span><span class="dot">·</span>
+                    <span>C++</span><span class="dot">·</span>
+                    <span>Python</span><span class="dot">·</span>
+                    <span>Tailwind</span><span class="dot">·</span>
+                    <span>Express</span><span class="dot">·</span>
+                </div>
+                <!-- duplicate for seamless loop -->
+                <div class="marquee-content" aria-hidden="true">
+                    <span>React</span><span class="dot">·</span>
+                    <span>Next.js</span><span class="dot">·</span>
+                    <span>TypeScript</span><span class="dot">·</span>
+                    <span>Node.js</span><span class="dot">·</span>
+                    <span>PostgreSQL</span><span class="dot">·</span>
+                    <span>Supabase</span><span class="dot">·</span>
+                    <span>Prisma</span><span class="dot">·</span>
+                    <span>WebSockets</span><span class="dot">·</span>
+                    <span>C++</span><span class="dot">·</span>
+                    <span>Python</span><span class="dot">·</span>
+                    <span>Tailwind</span><span class="dot">·</span>
+                    <span>Express</span><span class="dot">·</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- ══ ABOUT ══════════════════════════════════════════════════ -->
         <section class="section two-column" id="about">
             <div class="section-heading reveal">
                 <p class="eyebrow">About</p>
-                <h2>Developer who likes knowing what runs underneath.</h2>
+                <h2>Curious about what runs underneath.</h2>
             </div>
-            <div class="section-body reveal">
+            <div class="section-body reveal" style="--delay:0.12s">
                 <p>
-                    I am a Computer Science undergrad at VIT who ships full-stack products end to end &mdash; auth, database schema, API, and the interface on top &mdash; then goes back and asks why the mechanism underneath works the way it does.
+                    I am a Computer Science undergrad at VIT who ships full-stack products end to end &mdash; auth, database schema, API, and the interface on top &mdash; then goes back and asks <strong>why the mechanism underneath works</strong> the way it does.
                 </p>
                 <p>
                     Recent work: a CRDT-based sync engine for a collaborative code editor, a debtor-creditor settlement algorithm for an expense splitter, and a Postgres-backed productivity dashboard with local fallbacks for offline use.
@@ -83,12 +158,35 @@
                 <p>
                     Currently deepening machine learning and computer vision alongside the full-stack work, aiming to build products that are usable on the surface and explainable underneath.
                 </p>
-                <p class="academic-note">
-                    B.Tech CSE at VIT · graduating 2028 · CGPA 8.4
-                </p>
+
+                <!-- Code snippet card -->
+                <div class="code-card reveal" style="--delay:0.22s">
+                    <div class="code-card-bar">
+                        <span class="code-dot" style="background:#ff5f57"></span>
+                        <span class="code-dot" style="background:#febc2e"></span>
+                        <span class="code-dot" style="background:#28c840"></span>
+                        <span class="code-card-title">vishal.ts</span>
+                    </div>
+                    <pre class="code-body"><span class="ck">const</span> <span class="cv">vishal</span> <span class="co">=</span> {
+  <span class="cp">location</span>:      <span class="cs">'VIT, India'</span>,
+  <span class="cp">graduating</span>:   <span class="cn">2028</span>,
+  <span class="cp">status</span>:       <span class="cs">'Open to internships'</span>,
+  <span class="cp">interests</span>: [
+    <span class="cs">'Distributed Systems'</span>,
+    <span class="cs">'Performance Engineering'</span>,
+    <span class="cs">'Clean Architectures'</span>,
+  ],
+};
+
+<span class="cm">// I don't just make it work —</span>
+<span class="cm">// I learn why it works.</span></pre>
+                </div>
+
+                <p class="academic-note">B.Tech CSE at VIT · graduating 2028 · CGPA 8.4</p>
             </div>
         </section>
 
+        <!-- ══ SKILLS ═════════════════════════════════════════════════ -->
         <section class="section" id="skills">
             <div class="section-heading narrow reveal">
                 <p class="eyebrow">Skills</p>
@@ -119,15 +217,16 @@
             </div>
         </section>
 
+        <!-- ══ PROJECTS ═══════════════════════════════════════════════ -->
         <section class="section" id="projects">
             <div class="section-heading narrow reveal">
                 <p class="eyebrow">Projects</p>
                 <h2>Selected Work</h2>
-                <p>Featured original repositories chosen for recency, live demos, and stronger engineering signal.</p>
+                <p>Three real apps. Real users. Real engineering decisions.</p>
             </div>
 
             <div class="project-grid reveal">
-                <article class="project-card">
+                <article class="project-card" data-tilt>
                     <a class="browser-frame" href="https://splitwise-clone-kappa.vercel.app/" target="_blank" rel="noopener noreferrer" aria-label="Open Ledger live demo">
                         <div class="browser-bar">
                             <span class="browser-dot"></span>
@@ -151,12 +250,12 @@
                         <li>Unit tests, type checks, linting, build and migration checks</li>
                     </ul>
                     <div class="project-links">
-                        <a href="https://splitwise-clone-kappa.vercel.app/" target="_blank" rel="noopener noreferrer">Live Demo</a>
-                        <a href="https://github.com/Meloxy-tech/splitwise-clone" target="_blank" rel="noopener noreferrer">GitHub</a>
+                        <a href="https://splitwise-clone-kappa.vercel.app/" target="_blank" rel="noopener noreferrer">Live Demo ↗</a>
+                        <a href="https://github.com/Meloxy-tech/splitwise-clone" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
                     </div>
                 </article>
 
-                <article class="project-card">
+                <article class="project-card" data-tilt>
                     <a class="browser-frame" href="https://collab-code-phi-liart.vercel.app/" target="_blank" rel="noopener noreferrer" aria-label="Open CollabCode live demo">
                         <div class="browser-bar">
                             <span class="browser-dot"></span>
@@ -180,12 +279,12 @@
                         <li>Dependency-free heuristic review flow</li>
                     </ul>
                     <div class="project-links">
-                        <a href="https://collab-code-phi-liart.vercel.app" target="_blank" rel="noopener noreferrer">Live Demo</a>
-                        <a href="https://github.com/Meloxy-tech/CollabCode" target="_blank" rel="noopener noreferrer">GitHub</a>
+                        <a href="https://collab-code-phi-liart.vercel.app" target="_blank" rel="noopener noreferrer">Live Demo ↗</a>
+                        <a href="https://github.com/Meloxy-tech/CollabCode" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
                     </div>
                 </article>
 
-                <article class="project-card">
+                <article class="project-card" data-tilt>
                     <a class="browser-frame" href="https://daily-os-silk.vercel.app/" target="_blank" rel="noopener noreferrer" aria-label="Open Daily.OS live demo">
                         <div class="browser-bar">
                             <span class="browser-dot"></span>
@@ -209,19 +308,24 @@
                         <li>Zustand state, dashboard widgets, Vercel deployment</li>
                     </ul>
                     <div class="project-links">
-                        <a href="https://daily-os-silk.vercel.app" target="_blank" rel="noopener noreferrer">Live Demo</a>
-                        <a href="https://github.com/Meloxy-tech/Daily.OS" target="_blank" rel="noopener noreferrer">GitHub</a>
+                        <a href="https://daily-os-silk.vercel.app" target="_blank" rel="noopener noreferrer">Live Demo ↗</a>
+                        <a href="https://github.com/Meloxy-tech/Daily.OS" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
                     </div>
                 </article>
             </div>
         </section>
 
+        <!-- ══ CONTACT ════════════════════════════════════════════════ -->
         <section class="section contact-section" id="contact">
             <div class="contact-copy reveal">
+                <div class="avail-pill" style="margin-bottom:28px">
+                    <span class="avail-dot" aria-hidden="true"><span></span></span>
+                    Available now
+                </div>
                 <p class="eyebrow">Contact</p>
-                <h2>Let us build something useful.</h2>
+                <h2>Let's Build.</h2>
                 <p>
-                    I am currently open to internships, freelance work, and full-stack roles. Send a message, email me, or download the resume.
+                    I ship fast and communicate well. Open to internships, freelance, and full-stack roles. Drop a message or grab the resume.
                 </p>
                 <div class="contact-links">
                     <a href="mailto:dhankharvishal84@gmail.com">dhankharvishal84@gmail.com</a>
@@ -231,24 +335,35 @@
                 </div>
             </div>
 
-            <form class="contact-form reveal" id="contactForm" action="https://formsubmit.co/dhankharvishal84@gmail.com" method="POST">
+            <form class="contact-form reveal" id="contactForm" action="https://formsubmit.co/dhankharvishal84@gmail.com" method="POST" style="--delay:0.15s">
                 <input type="hidden" name="_subject" value="New message from Vishal's portfolio">
                 <input type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true" class="honeypot">
                 <label for="name">Name</label>
-                <input id="name" type="text" name="name" required autocomplete="name">
+                <input id="name" type="text" name="name" required autocomplete="name" placeholder="Your name">
                 <label for="email">Email</label>
-                <input id="email" type="email" name="email" required autocomplete="email">
+                <input id="email" type="email" name="email" required autocomplete="email" placeholder="your@email.com">
                 <label for="message">Message</label>
-                <textarea id="message" name="message" rows="5" required></textarea>
-                <button class="button primary" type="submit">Send Message</button>
+                <textarea id="message" name="message" rows="5" required placeholder="What's on your mind?"></textarea>
+                <button class="button primary" type="submit">Send Message →</button>
                 <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
             </form>
         </section>
     </main>
 
     <footer class="site-footer">
-        <p>Vishal</p>
-        <p>Built for clarity, speed, and proof.</p>
+        <p class="footer-brand">Vishal.</p>
+        <p>Built with obsession.</p>
+        <div class="footer-social">
+            <a href="https://github.com/Meloxy-tech" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.58 2 12.25c0 4.53 2.87 8.37 6.84 9.73.5.1.68-.22.68-.49 0-.24-.01-1.04-.01-1.88-2.78.61-3.37-1.2-3.37-1.2-.45-1.18-1.11-1.49-1.11-1.49-.9-.63.07-.62.07-.62 1 .07 1.53 1.05 1.53 1.05.89 1.56 2.34 1.11 2.91.85.09-.66.35-1.11.63-1.37-2.22-.26-4.56-1.14-4.56-5.07 0-1.12.39-2.03 1.03-2.75-.1-.26-.45-1.31.1-2.72 0 0 .84-.28 2.75 1.05a9.36 9.36 0 015 0c1.91-1.33 2.75-1.05 2.75-1.05.55 1.41.2 2.46.1 2.72.64.72 1.03 1.63 1.03 2.75 0 3.94-2.34 4.8-4.57 5.06.36.32.68.94.68 1.9 0 1.37-.01 2.48-.01 2.82 0 .27.18.6.69.49A10.26 10.26 0 0022 12.25C22 6.58 17.52 2 12 2z"/></svg>
+            </a>
+            <a href="https://www.linkedin.com/in/VishalDhankhar" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+            </a>
+            <a href="mailto:dhankharvishal84@gmail.com" aria-label="Email">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+            </a>
+        </div>
         <p>&copy; 2026 Vishal.</p>
     </footer>
 
@@ -256,34 +371,68 @@
     (function () {
         "use strict";
 
-        var header = document.getElementById("siteHeader");
-        var progress = document.getElementById("scrollProgress");
-        var menuButton = document.getElementById("menuButton");
-        var siteNav = document.getElementById("siteNav");
+        var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-        function updateChrome() {
+        // ── Scroll progress ─────────────────────────────────────────
+        var progress = document.getElementById("scrollProgress");
+        function updateProgress() {
             var max = document.documentElement.scrollHeight - window.innerHeight;
-            var percentage = max > 0 ? (window.scrollY / max) * 100 : 0;
-            progress.style.width = percentage + "%";
+            progress.style.width = (max > 0 ? (window.scrollY / max) * 100 : 0) + "%";
+        }
+
+        // ── Header scroll state ──────────────────────────────────────
+        var header = document.getElementById("siteHeader");
+        function updateHeader() {
             header.classList.toggle("is-scrolled", window.scrollY > 24);
         }
 
+        // ── Section indicator ────────────────────────────────────────
+        var indLinks = Array.prototype.slice.call(
+            document.querySelectorAll(".section-indicator a")
+        );
+        var sections = Array.prototype.slice.call(
+            document.querySelectorAll("section[id]")
+        );
+        function updateIndicator() {
+            var current = sections[0] ? sections[0].id : "";
+            sections.forEach(function (s) {
+                if (window.scrollY >= s.offsetTop - 220) current = s.id;
+            });
+            indLinks.forEach(function (a) {
+                a.classList.toggle("is-active", a.dataset.section === current);
+            });
+        }
+
+        // ── Scroll indicator fade out ────────────────────────────────
+        var scrollInd = document.querySelector(".scroll-indicator");
+        var scrollIndHidden = false;
+
+        // ── Batched scroll handler ───────────────────────────────────
         var ticking = false;
         window.addEventListener("scroll", function () {
             if (!ticking) {
                 window.requestAnimationFrame(function () {
-                    updateChrome();
+                    updateProgress();
+                    updateHeader();
+                    updateIndicator();
+                    if (!scrollIndHidden && window.scrollY > 80 && scrollInd) {
+                        scrollInd.style.opacity = "0";
+                        scrollInd.style.pointerEvents = "none";
+                        scrollIndHidden = true;
+                    }
                     ticking = false;
                 });
                 ticking = true;
             }
         }, { passive: true });
 
+        // ── Mobile menu ──────────────────────────────────────────────
+        var menuButton = document.getElementById("menuButton");
+        var siteNav    = document.getElementById("siteNav");
         menuButton.addEventListener("click", function () {
             var open = siteNav.classList.toggle("is-open");
             menuButton.setAttribute("aria-expanded", String(open));
         });
-
         siteNav.querySelectorAll("a").forEach(function (link) {
             link.addEventListener("click", function () {
                 siteNav.classList.remove("is-open");
@@ -291,114 +440,149 @@
             });
         });
 
-        if ("IntersectionObserver" in window && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-            var observer = new IntersectionObserver(function (entries) {
+        // ── Scroll-reveal ────────────────────────────────────────────
+        var statsAnimated = false;
+        if ("IntersectionObserver" in window && !reduceMotion) {
+            var revealObs = new IntersectionObserver(function (entries) {
                 entries.forEach(function (entry) {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add("in-view");
-                        observer.unobserve(entry.target);
+                    if (!entry.isIntersecting) return;
+                    entry.target.classList.add("in-view");
+                    revealObs.unobserve(entry.target);
+
+                    // Count-up for stat numbers
+                    if (!statsAnimated && entry.target.closest(".stats")) {
+                        statsAnimated = true;
+                        document.querySelectorAll(".count").forEach(function (el) {
+                            var target   = parseFloat(el.dataset.target);
+                            var decimals = parseInt(el.dataset.decimals || "0", 10);
+                            var dur      = 1400;
+                            var fps      = 1000 / 60;
+                            var frames   = Math.round(dur / fps);
+                            var frame    = 0;
+                            var timer = setInterval(function () {
+                                frame++;
+                                var t = frame / frames;
+                                // ease-out-quart
+                                var p = 1 - Math.pow(1 - t, 4);
+                                var val = target * p;
+                                el.textContent = decimals ? val.toFixed(decimals) : Math.floor(val);
+                                if (frame >= frames) {
+                                    el.textContent = decimals ? target.toFixed(decimals) : target;
+                                    clearInterval(timer);
+                                }
+                            }, fps);
+                        });
                     }
                 });
             }, { threshold: 0.12 });
 
-            document.querySelectorAll(".reveal").forEach(function (element) {
-                observer.observe(element);
+            document.querySelectorAll(".reveal").forEach(function (el) {
+                revealObs.observe(el);
             });
         } else {
-            document.querySelectorAll(".reveal").forEach(function (element) {
-                element.classList.add("in-view");
+            document.querySelectorAll(".reveal").forEach(function (el) {
+                el.classList.add("in-view");
+            });
+            document.querySelectorAll(".count").forEach(function (el) {
+                var target   = parseFloat(el.dataset.target);
+                var decimals = parseInt(el.dataset.decimals || "0", 10);
+                el.textContent = decimals ? target.toFixed(decimals) : target;
             });
         }
 
-        // Highlight the current section's nav link while scrolling.
-        var navLinks = Array.prototype.slice.call(siteNav.querySelectorAll("a[href^='#']"));
-        var trackedSections = navLinks
-            .map(function (link) { return document.querySelector(link.getAttribute("href")); })
-            .filter(Boolean);
-
-        if ("IntersectionObserver" in window && trackedSections.length) {
-            var navObserver = new IntersectionObserver(function (entries) {
+        // ── Active nav link while scrolling ─────────────────────────
+        var navLinks = Array.prototype.slice.call(
+            siteNav.querySelectorAll("a[href^='#']")
+        );
+        if ("IntersectionObserver" in window && sections.length) {
+            var navObs = new IntersectionObserver(function (entries) {
                 entries.forEach(function (entry) {
                     var link = navLinks.filter(function (a) {
                         return a.getAttribute("href") === "#" + entry.target.id;
                     })[0];
-                    if (!link) { return; }
+                    if (!link) return;
                     if (entry.isIntersecting) {
                         navLinks.forEach(function (a) { a.classList.remove("is-active"); });
                         link.classList.add("is-active");
                     }
                 });
             }, { rootMargin: "-45% 0px -50% 0px", threshold: 0 });
-
-            trackedSections.forEach(function (section) { navObserver.observe(section); });
+            sections.forEach(function (s) { navObs.observe(s); });
         }
 
-        // Subtle desktop-only cursor glow in the hero. No-op on touch devices
-        // or when reduced motion is requested, and only ever touches CSS
-        // custom properties (cheap, compositor-friendly repaint).
-        var hero = document.getElementById("home");
-        var wantsMotion = !window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+        // ── Cursor ambient glow (desktop fine pointer only) ──────────
+        var glow = document.getElementById("cursorGlow");
         var finePointer = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
-        if (hero && wantsMotion && finePointer) {
-            var rafPending = false;
-            hero.addEventListener("pointermove", function (event) {
-                if (rafPending) { return; }
-                rafPending = true;
+        if (glow && finePointer && !reduceMotion) {
+            var glowRaf = false;
+            window.addEventListener("mousemove", function (e) {
+                if (glowRaf) return;
+                glowRaf = true;
                 window.requestAnimationFrame(function () {
-                    var rect = hero.getBoundingClientRect();
-                    hero.style.setProperty("--glow-x", ((event.clientX - rect.left) / rect.width * 100) + "%");
-                    hero.style.setProperty("--glow-y", ((event.clientY - rect.top) / rect.height * 100) + "%");
-                    rafPending = false;
+                    glow.style.transform = "translate(" + e.clientX + "px, " + e.clientY + "px)";
+                    glowRaf = false;
                 });
             }, { passive: true });
-            hero.classList.add("has-glow");
         }
 
-        // Send the contact form without a full page navigation, and show
-        // an inline status message instead of formsubmit.co's redirect page.
-        // NOTE: must use the /ajax/ endpoint (not the plain email URL) for fetch.
+        // ── Card 3-D tilt (desktop only) ─────────────────────────────
+        if (finePointer && !reduceMotion) {
+            document.querySelectorAll("[data-tilt]").forEach(function (card) {
+                card.addEventListener("mousemove", function (e) {
+                    var r = card.getBoundingClientRect();
+                    var x = (e.clientX - r.left) / r.width  - 0.5;
+                    var y = (e.clientY - r.top)  / r.height - 0.5;
+                    card.style.transform = "translateY(-6px) rotateX(" + (-y * 6) + "deg) rotateY(" + (x * 6) + "deg)";
+                });
+                card.addEventListener("mouseleave", function () {
+                    card.style.transform = "";
+                });
+            });
+        }
+
+        // ── Contact form — formsubmit /ajax/ endpoint ─────────────────
         var contactForm = document.getElementById("contactForm");
-        var formStatus = document.getElementById("formStatus");
+        var formStatus  = document.getElementById("formStatus");
         if (contactForm && formStatus && "fetch" in window) {
-            contactForm.addEventListener("submit", function (event) {
-                event.preventDefault();
-                var submitButton = contactForm.querySelector("button[type='submit']");
-                submitButton.disabled = true;
-                formStatus.textContent = "Sending...";
+            contactForm.addEventListener("submit", function (e) {
+                e.preventDefault();
+                var btn = contactForm.querySelector("button[type='submit']");
+                btn.disabled = true;
+                formStatus.textContent = "Sending…";
                 formStatus.classList.remove("is-error");
 
                 var data = {
-                    name: contactForm.querySelector("#name").value,
-                    email: contactForm.querySelector("#email").value,
+                    name:    contactForm.querySelector("#name").value,
+                    email:   contactForm.querySelector("#email").value,
                     message: contactForm.querySelector("#message").value
                 };
 
                 fetch("https://formsubmit.co/ajax/dhankharvishal84@gmail.com", {
                     method: "POST",
-                    headers: {
-                        "Content-Type": "application/json",
-                        "Accept": "application/json"
-                    },
+                    headers: { "Content-Type": "application/json", "Accept": "application/json" },
                     body: JSON.stringify(data)
-                }).then(function (response) {
-                    return response.json();
+                }).then(function (r) {
+                    return r.json();
                 }).then(function (json) {
-                    if (json && json.success === "true" || json.success === true) {
-                        formStatus.textContent = "Message sent. I will get back to you soon.";
+                    if (json && (json.success === "true" || json.success === true)) {
+                        formStatus.textContent = "Message sent! I'll get back to you soon.";
                         contactForm.reset();
                     } else {
-                        throw new Error("Submission failed");
+                        throw new Error("failed");
                     }
                 }).catch(function () {
-                    formStatus.textContent = "Something went wrong. Please email me directly instead.";
+                    formStatus.textContent = "Something went wrong. Email me directly instead.";
                     formStatus.classList.add("is-error");
                 }).finally(function () {
-                    submitButton.disabled = false;
+                    btn.disabled = false;
                 });
             });
         }
 
-        updateChrome();
+        // Initial calls
+        updateProgress();
+        updateHeader();
+        updateIndicator();
     })();
     </script>
 </body>
