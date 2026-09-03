@@ -107,19 +107,19 @@ strong { font-weight: 700; color: var(--text); }
 }
 
 /* ═══════════════════════════════════════════════════════════════
-   CURSOR GLOW
+   HERO SPOTLIGHT (mouse follows within hero only)
 ═══════════════════════════════════════════════════════════════ */
-.cursor-glow {
-    position: fixed;
-    top: 0; left: 0;
-    width: 500px; height: 500px;
-    margin: -250px 0 0 -250px;
+.hero.has-glow::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 0;
     pointer-events: none;
-    z-index: 1;
-    border-radius: 50%;
-    background: radial-gradient(circle, rgba(199,184,138,.07), transparent 70%);
-    transition: opacity 200ms ease;
-    will-change: transform;
+    background: radial-gradient(
+        520px circle at var(--glow-x, 30%) var(--glow-y, 40%),
+        rgba(199, 184, 138, 0.09),
+        transparent 65%
+    );
 }
 
 /* ═══════════════════════════════════════════════════════════════
@@ -942,7 +942,6 @@ h3 { font-size: 22px; line-height: 1.15; font-weight: 700; }
     .marquee-track { display: none; } /* hide on tiny screens */
 
     .site-footer { flex-direction: column; align-items: flex-start; }
-    .cursor-glow { display: none; }
 }
 
 /* ═══════════════════════════════════════════════════════════════
@@ -958,5 +957,5 @@ h3 { font-size: 22px; line-height: 1.15; font-weight: 700; }
     .grain  { animation: none; }
     .marquee-inner { animation: none; }
     .avail-dot > span { animation: none; }
-    .cursor-glow { display: none; }
+    .hero.has-glow::before { display: none; }
 }

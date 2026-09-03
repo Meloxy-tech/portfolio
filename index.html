@@ -20,9 +20,6 @@
     <!-- Film grain -->
     <div class="grain" aria-hidden="true"></div>
 
-    <!-- Ambient cursor glow -->
-    <div class="cursor-glow" id="cursorGlow" aria-hidden="true"></div>
-
     <!-- Scroll progress -->
     <div class="scroll-progress" id="scrollProgress"></div>
 
@@ -510,19 +507,22 @@
             sections.forEach(function (s) { navObs.observe(s); });
         }
 
-        // ── Cursor ambient glow (desktop fine pointer only) ──────────
-        var glow = document.getElementById("cursorGlow");
+        // ── Hero spotlight (tracks mouse only inside the hero — subtle, contained) ──
+        var hero = document.getElementById("home");
         var finePointer = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
-        if (glow && finePointer && !reduceMotion) {
-            var glowRaf = false;
-            window.addEventListener("mousemove", function (e) {
-                if (glowRaf) return;
-                glowRaf = true;
+        if (hero && finePointer && !reduceMotion) {
+            var heroRaf = false;
+            hero.addEventListener("pointermove", function (e) {
+                if (heroRaf) return;
+                heroRaf = true;
                 window.requestAnimationFrame(function () {
-                    glow.style.transform = "translate(" + e.clientX + "px, " + e.clientY + "px)";
-                    glowRaf = false;
+                    var r = hero.getBoundingClientRect();
+                    hero.style.setProperty("--glow-x", ((e.clientX - r.left) / r.width  * 100) + "%");
+                    hero.style.setProperty("--glow-y", ((e.clientY - r.top)  / r.height * 100) + "%");
+                    heroRaf = false;
                 });
             }, { passive: true });
+            hero.classList.add("has-glow");
         }
 
         // ── Card 3-D tilt (desktop only) ─────────────────────────────
